@@ -9,7 +9,11 @@ if proc.returncode != 0:
     exit(0)
 
 fi = open('fi.txt', 'r')
+input_string = fi.read() + '\n@#-3aV[./'
+
 fo = open('fo.txt', 'w')
-subprocess.run([
+proc = subprocess.Popen([
     f'./src/{s}.exe',
-],stdin=fi, stdout=fo)
+],stdin=subprocess.PIPE, stdout=fo)
+
+proc.communicate(input_string.encode('utf-8'))
