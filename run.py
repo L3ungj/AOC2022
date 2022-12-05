@@ -12,8 +12,6 @@ fi = open('fi.txt', 'r')
 input_string = fi.read() + '\n@#-3aV[./'
 
 fo = open('fo.txt', 'w')
-proc = subprocess.Popen([
+proc = subprocess.run([
     f'./src/{s}.exe',
-],stdin=subprocess.PIPE, stdout=fo)
-
-proc.communicate(input_string.encode('utf-8'))
+],input=input_string.encode('utf-8'), stdout=fo)
