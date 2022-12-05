@@ -1,6 +1,11 @@
 import subprocess
+import sys
 
-s = input()
+if len(sys.argv) < 2:
+    print("Usage: py create.py <name>")
+    exit(0)
+
+s = sys.argv[1]
 proc = subprocess.run([
     'rustc', f'./src/{s}.rs',
     '-o', f'./src/{s}.exe'

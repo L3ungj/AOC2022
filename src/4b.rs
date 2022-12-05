@@ -16,7 +16,7 @@ fn main()
         let s2_split: Vec<&str> = s2.split("-").collect();
         let l1 = s1_split[0].parse::<i32>().unwrap();let r1 = s1_split[1].parse::<i32>().unwrap();
         let l2 = s2_split[0].parse::<i32>().unwrap();let r2 = s2_split[1].parse::<i32>().unwrap();
-        if (l1 >= l2 && r1 <= r2) || (l2 >= l1 && r2 <= r1)
+        if (l1 >= l2 && l1 <= r2) || (r1 >= l2 && r1 <= r2) || (r2 >= l1 && r2 <= r1)
         {
             sum += 1;
         }
