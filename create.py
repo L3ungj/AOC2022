@@ -8,12 +8,12 @@ fi = open('template.rs', 'r')
 s = sys.argv[1]
 if s.endswith('b'):
     try:
-        fi = open(f'{s[:-1]}a')
+        fi = open(f'src/{s[:-1]}a.rs')
     except:
         pass
 
-# fo = open(f'src/{s}.rs', 'w')
-# fo.write(fi.read())
+fo = open(f'src/{s}.rs', 'w')
+fo.write(fi.read())
 
 toml_fi = open('Cargo.toml', 'r')
 toml_content = toml_fi.read()
