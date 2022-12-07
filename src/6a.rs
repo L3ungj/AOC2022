@@ -10,7 +10,7 @@ fn main() {
     {
         i += 1;
         v.push_back(c);
-        if v.len() > 14
+        if v.len() > 4
         {
             v.pop_front();
         }
