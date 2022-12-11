@@ -2,7 +2,7 @@
 
 use std::collections::VecDeque;
 
-type Monkey = (String, i32, u32, u32);
+type Monkey = (String, i32, usize, usize);
 
 fn apply(operation: &String, old: i32) -> i32 {
     let tokens: Vec<String> = operation.split(' ').map(String::from).collect();
@@ -17,7 +17,7 @@ fn apply(operation: &String, old: i32) -> i32 {
     if tokens[2] == "old" {
         rval = old;
     } else {
-        rval = tokens[0].parse().unwrap();
+        rval = tokens[2].parse().unwrap();
     }
     if *op == "+" {
         return lval + rval;
@@ -61,13 +61,20 @@ fn main() {
         for i in 0..n {
             while !v[i].is_empty() {
                 let cur = *v[i].front().unwrap();
+                v[i].pop_front();
                 let mut new = apply(&monkeys[i].0, cur);
                 new = new / 3;
                 cnt[i] += 1;
                 if new % monkeys[i].1 == 0 {
                     v[monkeys[i].2].push_back(new);
                 }
+                else {
+                    v[monkeys[i].3].push_back(new);
+                }
             }
         }
     }
+    cnt.sort();
+    cnt.reverse();
+    println!("{}", cnt[0] * cnt[1]);
 }
