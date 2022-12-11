@@ -1,16 +1,21 @@
-fn main()
-{
-    let mut sum = 0;
-    loop {
-        let mut s = String::new();
-        std::io::stdin().read_line(&mut s).unwrap();
-        s = s.trim().to_string();
-        if s == "@#-3aV[./"
-        {
-            break;
-        }
-        
-        sum += 0;
+type ll = i64;
+type vi = Vec<ll>;
+
+fn rdln(s: &mut String) -> bool {
+    std::io::stdin().read_line(s).unwrap();
+    *s = (*s).trim().to_string();
+    if *s == "@#-3aV[./" {
+        return true;
     }
-    println!("{}", sum.to_string());
+    return false;
+}
+
+fn main() {
+    'input_loop: loop {
+        let mut s = String::new();
+        if rdln(&mut s) {
+            break 'input_loop;
+        }
+        println!("{}", s)
+    }
 }
