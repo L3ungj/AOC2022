@@ -87,3 +87,7 @@ path="src/10a.rs"
 name="day10b"
 path="src/10b.rs"
 
+[[bin]]
+name="day11a"
+path="src/11a.rs"
+
