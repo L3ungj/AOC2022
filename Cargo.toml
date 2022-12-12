@@ -95,3 +95,11 @@ path="src/11a.rs"
 name="day11b"
 path="src/11b.rs"
 
+[[bin]]
+name="day12a"
+path="src/12a.rs"
+
+[[bin]]
+name="day12b"
+path="src/12b.rs"
+
