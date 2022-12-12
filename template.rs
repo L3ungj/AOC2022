@@ -16,6 +16,5 @@ fn main() {
         if rdln(&mut s) {
             break 'input_loop;
         }
-        println!("{}", s)
     }
 }
