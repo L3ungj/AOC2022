@@ -8,6 +8,9 @@ if len(sys.argv) < 2:
 s = sys.argv[1]
 proc = subprocess.run([
     'rustc', f'./src/{s}.rs',
+    '-A', 'unused_variables',
+    '-A', 'dead_code',
+    '-A', 'non_camel_case_types',
     '-o', f'./target/debug/{s}.exe'
 ])
 if proc.returncode != 0:

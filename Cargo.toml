@@ -111,3 +111,15 @@ path="src/13a.rs"
 name="day13b"
 path="src/13b.rs"
 
+[[bin]]
+name="day14a"
+path="src/14a.rs"
+
+[[bin]]
+name="day14b"
+path="src/14b.rs"
+
+[[bin]]
+name="day15a"
+path="src/15a.rs"
+
