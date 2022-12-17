@@ -1,11 +1,16 @@
 import sys
+import os
 
 if len(sys.argv) < 2:
     print("Usage: py create.py <name>")
     exit(0)
 
-fi = open('template.rs', 'r')
 s = sys.argv[1]
+if os.path.exists(f'src/{s}.rs'):
+    print(f"File {s}.rs already exists")
+    exit(0)
+
+fi = open('template.rs', 'r')
 if s.endswith('b'):
     try:
         fi = open(f'src/{s[:-1]}a.rs')

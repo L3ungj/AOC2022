@@ -42,8 +42,20 @@ fn main() {
         }
     }
     let mut ma: ll = -99999999999;
+    let mut st: ll = -1;
+    let mut cnt = 0;
+    segs.sort();
     for sg in segs {
-        
+        if st == -1 {
+            st = sg.0;
+            ma = sg.1;
+        }
+        if sg.0 > ma {
+            cnt += ma - st + 1;
+            st = sg.0;
+        }
+        ma = std::cmp::max(ma, sg.1);
     }
-    println!("{}", hs.len() - rm_hs.len());
+    cnt += ma - st + 1;
+    println!("{}", cnt as usize - rm_hs.len());
 }
