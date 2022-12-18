@@ -25,7 +25,6 @@ fn dfs(u: usize,step: ll, vis: &Vec<bool>, dist: &Vec<Vec<ll>>, fr: &Vec<ll>) ->
     let n = dist.len();
     let mut ma = 0;
     // println!("dfsing {}", u);
-    let mut best = 10000000000000000;
     for v in 0..n {
         if (*fr)[v] == 0 || v == u || vis[v] {
             continue;
@@ -41,18 +40,16 @@ fn dfs(u: usize,step: ll, vis: &Vec<bool>, dist: &Vec<Vec<ll>>, fr: &Vec<ll>) ->
         cur += (*fr)[v] * (30 - n_step);
         if ma < cur {
             ma = cur;
-            best = v;
         }
     }
     // println!("{} at {} returns {}", u, step, ma);
-    // println!("best for {} is {}", u, best);
     return ma;
 }
 
 fn main() {
     let mut mp_valve : HashMap<String, usize> = HashMap::new();
     let mut _cnt = 0;
-    let mut G:Vec<Vec<usize>> = vec![Vec::new();100];
+    let mut g:Vec<Vec<usize>> = vec![Vec::new();100];
     let mut fr: Vec<ll> = vec![0;100];
     'input_loop: loop {
         let mut s = String::new();
@@ -75,7 +72,7 @@ fn main() {
         let u = get_valve(&valve, &mut mp_valve, &mut _cnt);
         for v_s in to_valves.split(", ") {
             let v = get_valve(&v_s.to_string(), &mut mp_valve, &mut _cnt);
-            G[u].push(v);
+            g[u].push(v);
         }
         // print!("{} {}: ", u, flow_rate);
         // for v in &G[u] {
@@ -89,7 +86,7 @@ fn main() {
     let mut dist: Vec<Vec<ll>> = vec![vec![1000000; n]; n];
     //flyod warshall
     for u in 0..n {
-        for v in &G[u] {
+        for v in &g[u] {
             let dist_ref = dist.get_mut(u).unwrap().get_mut(*v).unwrap();
             *dist_ref = 1;
         }
