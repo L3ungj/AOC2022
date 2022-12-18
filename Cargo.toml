@@ -139,3 +139,7 @@ path="src/16b.rs"
 name="day17a"
 path="src/17a.rs"
 
+[[bin]]
+name="day17b"
+path="src/17b.rs"
+
