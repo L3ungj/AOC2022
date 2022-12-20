@@ -1,6 +1,3 @@
-type ll = i64;
-type vi = Vec<ll>;
-
 fn rdln(s: &mut String) -> bool {
     std::io::stdin().read_line(s).unwrap();
     *s = (*s).trim().to_string();
@@ -8,6 +5,14 @@ fn rdln(s: &mut String) -> bool {
         return true;
     }
     return false;
+}
+
+fn rd_int(s: &String) -> i32 {
+    let end = s.find(' ');
+    if end == None {
+        return s.parse().unwrap();
+    }
+    s[..end.unwrap()].parse().unwrap()
 }
 
 fn main() {
