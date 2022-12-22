@@ -21,6 +21,8 @@ fn rd_int(s: &String) -> i32 {
 // 5__
 
 // Direction is 0 for right (>), 1 for down (v), 2 for left (<), and 3 for up (^).
+
+// Generated from figure. See 22b_fig.png
 // EDGE_RULES[i][dir] = (to, dir_of_to)
 const EDGE_RULES: [[(usize, usize); 4]; 6] = [
     [(1, 3), (2, 3), (3, 1), (5, 2)],
