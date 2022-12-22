@@ -179,3 +179,7 @@ path="src/21b.rs"
 name="day22a"
 path="src/22a.rs"
 
+[[bin]]
+name="day22b"
+path="src/22b.rs"
+
