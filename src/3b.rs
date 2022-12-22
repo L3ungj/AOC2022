@@ -1,6 +1,24 @@
-fn ord(c: char) -> i32
+fn rdln(s: &mut String) -> bool {
+    std::io::stdin().read_line(s).unwrap();
+    *s = (*s).trim_end().to_string();
+    if *s == "@#-3aV[./" {
+        return true;
+    }
+    return false;
+}
+
+fn rd_int(s: &String) -> i32 {
+    let end = s.find(' ');
+    if end == None {
+        return s.parse().unwrap();
+    }
+    s[..end.unwrap()].parse().unwrap()
+}
+
+
+fn ord(c: char) -> usize
 {
-    let a = c as i32;
+    let a = c as usize;
     if a >= 97 {return a - 96};
     return a-64 + 26;
 }
@@ -8,38 +26,33 @@ fn ord(c: char) -> i32
 fn main()
 {
     let mut sum = 0;
-    loop {
+    'input_loop: loop {
         let mut s1 = String::new();
-        std::io::stdin().read_line(&mut s1).unwrap();
-        s1 = s1.trim().to_string();
-        if s1 == "@#-3aV[./"
-        {
-            break;
+        if rdln(&mut s1) {
+            break 'input_loop;
         }
         let mut s2 = String::new();
-        std::io::stdin().read_line(&mut s2).unwrap();
-        s2 = s2.trim().to_string();
+        rdln(&mut s2);
         let mut s3 = String::new();
-        std::io::stdin().read_line(&mut s3).unwrap();
-        s3 = s3.trim().to_string();
+        rdln(&mut s3);
 
         let mut v1 = Vec::new();
         v1.resize(60, 0);
         for c in s1.chars()
         {
-            v1[ord(c) as usize] += 1;
+            v1[ord(c)] += 1;
         }
         let mut v2 = Vec::new();
         v2.resize(60, 0);
         for c in s2.chars()
         {
-            v2[ord(c) as usize] += 1;
+            v2[ord(c)] += 1;
         }
         let mut v3 = Vec::new();
         v3.resize(60, 0);
         for c in s3.chars()
         {
-            v3[ord(c) as usize] += 1;
+            v3[ord(c)] += 1;
         }
 
         let mut i = 0;
