@@ -1,6 +1,6 @@
 fn rdln(s: &mut String) -> bool {
     std::io::stdin().read_line(s).unwrap();
-    *s = (*s).trim().to_string();
+    *s = (*s).trim_end().to_string();
     if *s == "@#-3aV[./" {
         return true;
     }
