@@ -21,7 +21,7 @@ fn rd_int(s: &String) -> i32 {
 // 5__
 
 // Direction is 0 for right (>), 1 for down (v), 2 for left (<), and 3 for up (^).
-// corr[i][dir] = (to, dir_of_to)
+// EDGE_RULES[i][dir] = (to, dir_of_to)
 const EDGE_RULES: [[(usize, usize); 4]; 6] = [
     [(1, 3), (2, 3), (3, 1), (5, 2)],
     [(4, 1), (2, 2), (0, 3), (5, 3)],
@@ -91,17 +91,11 @@ fn walk_edge(from: &usize, dir: &usize, x: &mut usize, y: &mut usize) -> (usize,
     (to, new_dir)
 }
 
-fn corr(box_ : &usize, x: &usize, y:&usize) -> (usize, usize) {
+fn corr(box_: &usize, x: &usize, y: &usize) -> (usize, usize) {
     (ST_POS[*box_].0 + x - 1, ST_POS[*box_].1 + y - 1)
 }
 
-fn walk(
-    box_: &mut usize,
-    x: &mut usize,
-    y: &mut usize,
-    dir: &mut usize,
-    board: &Vec<Vec<char>>,
-) {
+fn walk(box_: &mut usize, x: &mut usize, y: &mut usize, dir: &mut usize, board: &Vec<Vec<char>>) {
     let mut new_x;
     let mut new_y;
     let mut new_dir = *dir;
@@ -126,11 +120,7 @@ fn walk(
         _ => panic!("Invalid direction"),
     }
     // fall outside of box
-    if !(new_x > 0
-        && new_x <= BOX_LEN
-        && new_y > 0
-        && new_y <= BOX_LEN)
-    {
+    if !(new_x > 0 && new_x <= BOX_LEN && new_y > 0 && new_y <= BOX_LEN) {
         new_x = *x;
         new_y = *y;
         (new_box, new_dir) = walk_edge(box_, dir, &mut new_x, &mut new_y);
@@ -176,7 +166,7 @@ fn main() {
     let mut dir = 0;
     let mut box_ = 0;
     let mut x = 1;
-    let mut y = 1;   
+    let mut y = 1;
     for step in 0..rots.len() {
         for _ in 0..moves_spl[step] {
             walk(&mut box_, &mut x, &mut y, &mut dir, &board);
@@ -193,5 +183,5 @@ fn main() {
     }
     // println!("{} {} {}", x, y, dir);
     let (corr_x, corr_y) = corr(&box_, &x, &y);
-    println!("{}", (corr_x+1) * 1000 + (corr_y+1) * 4 + dir);
+    println!("{}", (corr_x + 1) * 1000 + (corr_y + 1) * 4 + dir);
 }
