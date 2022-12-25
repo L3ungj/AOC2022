@@ -191,3 +191,11 @@ path="src/23a.rs"
 name="day23b"
 path="src/23b.rs"
 
+[[bin]]
+name="day24a"
+path="src/24a.rs"
+
+[[bin]]
+name="day24b"
+path="src/24b.rs"
+
