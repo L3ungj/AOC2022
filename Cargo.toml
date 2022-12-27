@@ -199,3 +199,11 @@ path="src/24a.rs"
 name="day24b"
 path="src/24b.rs"
 
+[[bin]]
+name="day25a"
+path="src/25a.rs"
+
+[[bin]]
+name="day25b"
+path="src/25b.rs"
+
